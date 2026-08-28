@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EX OR NEW</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game {
+      width: 100%;
+      max-width: 900px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #171717, #303030);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .start-screen {
+      padding: 40px 20px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      letter-spacing: 4px;
+      color: #ccc;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 56px;
+      margin: 0;
+      letter-spacing: 6px;
+    }
+
+    .description {
+      margin: 20px 0 40px;
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    .start-button {
+      border: none;
+      padding: 15px 55px;
+      border-radius: 30px;
+      background: white;
+      color: #111;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .start-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="game">
+
+    <section class="start-screen">
+      <div class="subtitle">ROMANCE SIMULATION GAME</div>
+
+      <h1>EX OR NEW</h1>
+
+      <p class="description">
+        다시 시작된 첫사랑, 그리고 새로운 설렘.<br>
+        당신의 선택은 누구를 향하게 될까?
+      </p>
+
+      <button class="start-button" onclick="startGame()">
+        GAME START
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    function startGame() {
+      alert("게임을 시작합니다!");
+    }
+  </script>
+
+</body>
+</html>
