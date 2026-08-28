@@ -375,6 +375,282 @@
 
       `;
     }
+    function startDay1() {
+
+  const playerName = localStorage.getItem("playerName");
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">나</div>
+
+          <p>오늘도 평범한 하루가 시작될 줄 알았다.</p>
+
+          <p>하지만 그날은 조금 달랐다.</p>
+
+          <button class="story-button" onclick="nextScene1()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene1() {
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">나</div>
+
+          <p>으음…… 몇 시지?</p>
+
+          <p>……잠깐.</p>
+
+          <p><strong>헉! 늦었다!</strong></p>
+
+          <button class="story-button" onclick="nextScene2()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene2() {
+
+  // 전화 벨소리
+  const phoneRing = new Audio("images/phone-ring.mp3");
+
+  phoneRing.loop = true;
+  phoneRing.volume = 0.7;
+
+  phoneRing.play().catch(() => {
+    console.log("벨소리는 화면을 한 번 터치한 후 재생될 수 있습니다.");
+  });
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">📱 전화가 왔다</div>
+
+          <p>띠링— 띠링—</p>
+
+          <p>화면을 확인하니 유다빈에게 전화가 와 있었다.</p>
+
+          <button class="story-button" onclick="answerCall()">
+            📞 전화 받기
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function answerCall() {
+
+  // 벨소리 멈추기
+  document.querySelectorAll("audio").forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  const playerName = localStorage.getItem("playerName");
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">📱 유다빈</div>
+
+          <p>여보세요?!</p>
+
+          <p>너 지금 어디야?!</p>
+
+          <p>설마 아직 집이야?!</p>
+
+          <button class="story-button" onclick="nextScene3()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene3() {
+
+  const playerName = localStorage.getItem("playerName");
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">${playerName}</div>
+
+          <p>나 지금 나가려고……!</p>
+
+          <p>먼저 가 있어!</p>
+
+          <button class="story-button" onclick="nextScene4()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene4() {
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">유다빈</div>
+
+          <p>알았어! 빨리 와!</p>
+
+          <p>나도 지금 학교 가는 중이야!</p>
+
+          <button class="story-button" onclick="nextScene5()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene5() {
+
+  const playerName = localStorage.getItem("playerName");
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">${playerName}</div>
+
+          <p>전화를 끊고 급하게 집을 나섰다.</p>
+
+          <p>오늘은 정말 지각이다……</p>
+
+          <button class="story-button" onclick="nextScene6()">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+function nextScene6() {
+
+  document.querySelector(".start-screen").innerHTML = `
+
+    <div class="story-screen">
+
+      <div class="day-title">DAY 1</div>
+
+      <div class="story-background">
+
+        <div class="scene-text">
+
+          <div class="speaker">나</div>
+
+          <p>……어?</p>
+
+          <p>저 사람……</p>
+
+          <p>설마…… 준호?</p>
+
+          <button class="story-button" onclick="alert('다음 장면: 자전거를 타고 지나가는 준호')">
+            NEXT
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
 
   </script>
 
