@@ -35,7 +35,8 @@
     }
 
     .start-screen {
-      padding: 40px 20px;
+      width: 100%;
+      padding: 40px 25px;
     }
 
     .subtitle {
@@ -51,6 +52,16 @@
       letter-spacing: 6px;
     }
 
+    h2 {
+      font-size: 36px;
+      margin: 15px 0 25px;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin-top: 0;
+    }
+
     .description {
       margin: 20px 0 40px;
       color: #ddd;
@@ -60,6 +71,7 @@
     .start-button {
       border: none;
       padding: 15px 55px;
+      margin-top: 20px;
       border-radius: 30px;
       background: white;
       color: #111;
@@ -71,6 +83,58 @@
     .start-button:hover {
       transform: scale(1.05);
     }
+
+    .info-screen,
+    .rules-screen,
+    .characters-screen {
+      width: 100%;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .info-text {
+      color: #ddd;
+      margin-bottom: 25px;
+    }
+
+    .rules-screen p {
+      color: #ddd;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .character-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px;
+      margin: 18px 0;
+      text-align: left;
+    }
+
+    .character-card p {
+      margin: 9px 0;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .character-card strong {
+      color: white;
+    }
+
+    .character-ending {
+      margin-top: 25px;
+      color: #ddd;
+    }
   </style>
 </head>
 
@@ -79,6 +143,7 @@
   <main class="game">
 
     <section class="start-screen">
+
       <div class="subtitle">ROMANCE SIMULATION GAME</div>
 
       <h1>EX OR NEW</h1>
@@ -91,45 +156,226 @@
       <button class="start-button" onclick="startGame()">
         GAME START
       </button>
+
     </section>
 
   </main>
 
+
   <script>
+
+    // 게임 시작
     function startGame() {
-      document.querySelector(".start-button").addEventListener("click", startGame);
 
-function startGame() {
-  document.querySelector(".start-screen").innerHTML = `
-    <h2>PLAYER INFO</h2>
+      document.querySelector(".start-screen").innerHTML = `
 
-    <p>게임을 시작하기 전에 정보를 입력해주세요.</p>
+        <div class="info-screen">
 
-    <input id="playerName" type="text" placeholder="이름">
+          <div class="subtitle">PLAYER INFORMATION</div>
 
-    <input id="playerAge" type="number" placeholder="나이">
+          <h2>플레이어 정보</h2>
 
-    <input id="playerBirth" type="date">
+          <p class="info-text">
+            게임을 시작하기 전에<br>
+            당신의 정보를 입력해주세요.
+          </p>
 
-    <button class="start-button" onclick="savePlayerInfo()">
-      확인
-    </button>
-  `;
-}
+          <input
+            id="playerName"
+            type="text"
+            placeholder="이름"
+          >
 
-function savePlayerInfo() {
-  const name = document.getElementById("playerName").value;
-  const age = document.getElementById("playerAge").value;
-  const birth = document.getElementById("playerBirth").value;
+          <input
+            id="playerAge"
+            type="number"
+            placeholder="나이"
+          >
 
-  if (!name || !age || !birth) {
-    alert("모든 정보를 입력해주세요!");
-    return;
-  }
+          <input
+            id="playerBirth"
+            type="date"
+          >
 
-  alert(name + "님의 정보가 저장되었습니다!");
-}
+          <button class="start-button" onclick="savePlayerInfo()">
+            확인
+          </button>
+
+        </div>
+
+      `;
     }
+
+
+    // 플레이어 정보 저장
+    function savePlayerInfo() {
+
+      const name = document.getElementById("playerName").value;
+      const age = document.getElementById("playerAge").value;
+      const birth = document.getElementById("playerBirth").value;
+
+
+      if (!name || !age || !birth) {
+
+        alert("이름, 나이, 생년월일을 모두 입력해주세요!");
+
+        return;
+      }
+
+
+      // 플레이어 이름 기억하기
+      localStorage.setItem("playerName", name);
+      localStorage.setItem("playerAge", age);
+      localStorage.setItem("playerBirth", birth);
+
+
+      // 게임 규칙 화면
+      document.querySelector(".start-screen").innerHTML = `
+
+        <div class="rules-screen">
+
+          <div class="subtitle">GAME RULES</div>
+
+          <h2>게임 규칙</h2>
+
+          <p>
+            이 게임은 선택형 로맨스 시뮬레이션 게임입니다.
+          </p>
+
+          <p>
+            플레이어의 선택에 따라<br>
+            스토리와 결말이 달라집니다.
+          </p>
+
+          <p>
+            이야기를 진행하며 다양한 선택지가 등장합니다.
+          </p>
+
+          <p>
+            <strong>EX</strong> — 다시 시작된 첫사랑<br>
+            <strong>NEW</strong> — 새롭게 시작되는 설렘
+          </p>
+
+          <p>
+            어떤 선택을 할지는 당신에게 달려 있습니다.
+          </p>
+
+          <button class="start-button" onclick="showCharacters()">
+            NEXT
+          </button>
+
+        </div>
+
+      `;
+    }
+
+
+    // 캐릭터 정보
+    function showCharacters() {
+
+      document.querySelector(".start-screen").innerHTML = `
+
+        <div class="characters-screen">
+
+          <div class="subtitle">CHARACTER PROFILE</div>
+
+          <h2>등장인물</h2>
+
+
+          <div class="character-card">
+
+            <h3>🐱 김준호</h3>
+
+            <p>
+              <strong>나이:</strong> 18세
+            </p>
+
+            <p>
+              <strong>생년월일:</strong> 8월 17일
+            </p>
+
+            <p>
+              <strong>관계:</strong> 플레이어의 전남자친구
+            </p>
+
+            <p>
+              <strong>성격:</strong>
+              무심하고 차가워 보이지만,
+              마음을 준 사람에게는 진심이다.
+            </p>
+
+            <p>
+              <strong>인상:</strong> 고양이상
+            </p>
+
+          </div>
+
+
+          <div class="character-card">
+
+            <h3>🐶 한호진</h3>
+
+            <p>
+              <strong>나이:</strong> 18세
+            </p>
+
+            <p>
+              <strong>관계:</strong> 플레이어의 남사친
+            </p>
+
+            <p>
+              <strong>성격:</strong>
+              밝고 다정하며 장난기가 많다.
+            </p>
+
+            <p>
+              <strong>인상:</strong> 강아지상
+            </p>
+
+          </div>
+
+
+          <p class="character-ending">
+            이제 당신의 이야기가 시작됩니다.
+          </p>
+
+
+          <button class="start-button" onclick="startDay1()">
+            DAY 1 START
+          </button>
+
+        </div>
+
+      `;
+    }
+
+
+    // DAY 1 시작
+    function startDay1() {
+
+      const playerName = localStorage.getItem("playerName");
+
+      document.querySelector(".start-screen").innerHTML = `
+
+        <div class="rules-screen">
+
+          <div class="subtitle">DAY 1</div>
+
+          <h2>새로운 하루</h2>
+
+          <p>
+            ${playerName}의 이야기가 시작된다.
+          </p>
+
+          <button class="start-button" onclick="alert('DAY 1 스토리를 시작합니다!')">
+            NEXT
+          </button>
+
+        </div>
+
+      `;
+    }
+
   </script>
 
 </body>
