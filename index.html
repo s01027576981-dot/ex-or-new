@@ -1,8 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EX OR NEW</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+    }
+
+    .game {
+      width: 100%;
+      max-width: 900px;
+      min-height: 100vh;
+      margin: auto;
+      background: linear-gradient(135deg, #171717, #303030);
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .start-screen {
+      width: 100%;
+      min-height: 100vh;
+      padding: 40px 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      letter-spacing: 4px;
+      color: #ccc;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 56px;
+      margin: 0;
+      letter-spacing: 6px;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin: 15px 0 25px;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin-top: 0;
+    }
+
+    .description {
+      margin: 20px 0 40px;
+      color: #ddd;
+      line-height: 1.8;
+    }
+
+    .start-button,
+    .story-button {
+      border: none;
+      padding: 14px 35px;
+      margin-top: 20px;
+      border-radius: 30px;
+      background: white;
+      color: #111;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .start-button:hover,
+    .story-button:hover {
+      transform: scale(1.05);
+    }
+
+    .info-screen,
+    .rules-screen,
+    .characters-screen {
+      width: 100%;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .info-text {
+      color: #ddd;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .rules-screen p {
+      color: #ddd;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .character-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 22px;
+      margin: 18px 0;
+      text-align: left;
+    }
+
+    .character-card p {
+      margin: 9px 0;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .character-ending {
+      margin-top: 25px;
+      color: #ddd;
+    }
+
+    /* 스토리 */
+
+    .story-screen {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .day-title {
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-size: 18px;
+      letter-spacing: 3px;
+      z-index: 10;
+    }
+
+    .story-background {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      background: linear-gradient(135deg, #191919, #303030);
+    }
+
+    .image-scene {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 70px 20px 20px;
+      background: #111;
+    }
+
+    .scene-image {
+      width: 100%;
+      max-width: 700px;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .scene-text {
+      width: 100%;
+      max-width: 800px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.88);
+      border-radius: 15px;
+      text-align: left;
+    }
+
+    .speaker {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .scene-text p {
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 7px 0;
+    }
+
+    .story-button {
+      display: block;
+      margin: 18px 0 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .scene-image {
+        max-height: 55vh;
+      }
+
+      .scene-text {
+        padding: 16px;
+      }
+
+      .scene-text p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="game">
+
+  <section class="start-screen">
+
+    <div>
+
+      <div class="subtitle">
+        ROMANCE SIMULATION GAME
+      </div>
+
+      <h1>
+        EX OR NEW
+      </h1>
+
+      <p class="description">
+        다시 시작된 첫사랑, 그리고 새로운 설렘.<br>
+        당신의 선택은 누구를 향하게 될까?
+      </p>
+
+      <button class="start-button" onclick="startGame()">
+        GAME START
+      </button>
+
+    </div>
+
+  </section>
+
+</main>
+
+
 <script>
 
-  // =========================
-  // 게임 시작
-  // =========================
+  /* =========================
+     소리
+     ========================= */
+
+  let alarmSound = null;
+  let phoneRing = null;
+
+
+  /* =========================
+     게임 시작
+     ========================= */
 
   function startGame() {
 
@@ -10,43 +282,67 @@
 
       <div class="info-screen">
 
-        <div class="subtitle">PLAYER INFORMATION</div>
+        <div class="subtitle">
+          PLAYER INFORMATION
+        </div>
 
-        <h2>플레이어 정보</h2>
+        <h2>
+          플레이어 정보
+        </h2>
 
         <p class="info-text">
           게임을 시작하기 전에<br>
           당신의 정보를 입력해주세요.
         </p>
 
-        <input id="playerName" type="text" placeholder="이름">
+        <input
+          id="playerName"
+          type="text"
+          placeholder="이름"
+        >
 
-        <input id="playerAge" type="number" placeholder="나이">
+        <input
+          id="playerAge"
+          type="number"
+          placeholder="나이"
+        >
 
-        <input id="playerBirth" type="date">
+        <input
+          id="playerBirth"
+          type="date"
+        >
 
-        <button class="start-button" onclick="savePlayerInfo()">
+        <button
+          class="start-button"
+          onclick="savePlayerInfo()"
+        >
           확인
         </button>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 플레이어 정보 저장
-  // =========================
+  /* =========================
+     정보 저장
+     ========================= */
 
   function savePlayerInfo() {
 
-    const name = document.getElementById("playerName").value;
-    const age = document.getElementById("playerAge").value;
-    const birth = document.getElementById("playerBirth").value;
+    const name =
+      document.getElementById("playerName").value;
+
+    const age =
+      document.getElementById("playerAge").value;
+
+    const birth =
+      document.getElementById("playerBirth").value;
 
     if (!name || !age || !birth) {
+
       alert("이름, 나이, 생년월일을 모두 입력해주세요!");
+
       return;
     }
 
@@ -54,13 +350,18 @@
     localStorage.setItem("playerAge", age);
     localStorage.setItem("playerBirth", birth);
 
+
     document.querySelector(".start-screen").innerHTML = `
 
       <div class="rules-screen">
 
-        <div class="subtitle">GAME RULES</div>
+        <div class="subtitle">
+          GAME RULES
+        </div>
 
-        <h2>게임 규칙</h2>
+        <h2>
+          게임 규칙
+        </h2>
 
         <p>
           이 게임은 선택형 로맨스 시뮬레이션 게임입니다.
@@ -76,27 +377,32 @@
         </p>
 
         <p>
-          <strong>EX</strong> — 다시 시작된 첫사랑<br>
-          <strong>NEW</strong> — 새롭게 시작되는 설렘
+          <strong>EX</strong>
+          — 다시 시작된 첫사랑<br>
+
+          <strong>NEW</strong>
+          — 새롭게 시작되는 설렘
         </p>
 
         <p>
           어떤 선택을 할지는 당신에게 달려 있습니다.
         </p>
 
-        <button class="start-button" onclick="showCharacters()">
+        <button
+          class="start-button"
+          onclick="showCharacters()"
+        >
           NEXT
         </button>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 캐릭터 정보
-  // =========================
+  /* =========================
+     등장인물
+     ========================= */
 
   function showCharacters() {
 
@@ -104,19 +410,35 @@
 
       <div class="characters-screen">
 
-        <div class="subtitle">CHARACTER PROFILE</div>
+        <div class="subtitle">
+          CHARACTER PROFILE
+        </div>
 
-        <h2>등장인물</h2>
+        <h2>
+          등장인물
+        </h2>
+
 
         <div class="character-card">
 
-          <h3>🐱 김준호</h3>
+          <h3>
+            🐱 김준호
+          </h3>
 
-          <p><strong>나이:</strong> 18세</p>
+          <p>
+            <strong>나이:</strong>
+            18세
+          </p>
 
-          <p><strong>생년월일:</strong> 8월 17일</p>
+          <p>
+            <strong>생년월일:</strong>
+            8월 17일
+          </p>
 
-          <p><strong>관계:</strong> 플레이어의 전남자친구</p>
+          <p>
+            <strong>관계:</strong>
+            플레이어의 전남자친구
+          </p>
 
           <p>
             <strong>성격:</strong>
@@ -124,25 +446,39 @@
             마음을 준 사람에게는 진심이다.
           </p>
 
-          <p><strong>인상:</strong> 고양이상</p>
+          <p>
+            <strong>인상:</strong>
+            고양이상
+          </p>
 
         </div>
 
 
         <div class="character-card">
 
-          <h3>🐶 한호진</h3>
+          <h3>
+            🐶 한호진
+          </h3>
 
-          <p><strong>나이:</strong> 18세</p>
+          <p>
+            <strong>나이:</strong>
+            18세
+          </p>
 
-          <p><strong>관계:</strong> 플레이어의 남사친</p>
+          <p>
+            <strong>관계:</strong>
+            플레이어의 남사친
+          </p>
 
           <p>
             <strong>성격:</strong>
             밝고 다정하며 장난기가 많다.
           </p>
 
-          <p><strong>인상:</strong> 강아지상</p>
+          <p>
+            <strong>인상:</strong>
+            강아지상
+          </p>
 
         </div>
 
@@ -151,110 +487,39 @@
           이제 당신의 이야기가 시작됩니다.
         </p>
 
-        <button class="start-button" onclick="startDay1()">
+
+        <button
+          class="start-button"
+          onclick="startDay1()"
+        >
           DAY 1 START
         </button>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // DAY 1
-  // =========================
+  /* =========================
+     DAY 1
+     알람 화면
+     ========================= */
 
   function startDay1() {
 
-    document.querySelector(".start-screen").innerHTML = `
+    alarmSound =
+      new Audio("images/alarm.mp3");
 
-      <div class="story-screen">
-
-        <div class="day-title">DAY 1</div>
-
-        <div class="story-background">
-
-          <div class="scene-text">
-
-            <div class="speaker">나</div>
-
-            <p>
-              오늘도 평범한 하루가 시작될 줄 알았다.
-            </p>
-
-            <p>
-              하지만 그날은 조금 달랐다.
-            </p>
-
-            <button class="story-button" onclick="nextScene1()">
-              NEXT
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-  }
+    alarmSound.loop = true;
+    alarmSound.volume = 0.7;
 
 
-  // =========================
-  // 아침
-  // =========================
+    alarmSound.play().catch(function() {
 
-  function nextScene1() {
+      console.log(
+        "알람 소리가 재생되지 않았습니다."
+      );
 
-    document.querySelector(".start-screen").innerHTML = `
-
-      <div class="story-screen">
-
-        <div class="day-title">DAY 1</div>
-
-        <div class="story-background">
-
-          <div class="scene-text">
-
-            <div class="speaker">나</div>
-
-            <p>으음…… 몇 시지?</p>
-
-            <p>……잠깐.</p>
-
-            <p><strong>헉! 늦었다!</strong></p>
-
-            <button class="story-button" onclick="nextScene2()">
-              NEXT
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    `;
-  }
-
-
-  // =========================
-  // 전화가 오는 장면
-  // =========================
-
-  let phoneRing = null;
-
-
-  function nextScene2() {
-
-    phoneRing = new Audio("images/phone-ring.mp3");
-
-    phoneRing.loop = true;
-    phoneRing.volume = 0.7;
-
-    phoneRing.play().catch(function() {
-      console.log("브라우저에서 소리 재생이 차단되었습니다.");
     });
 
 
@@ -262,23 +527,159 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
+
+        <div class="image-scene">
+
+          <img
+            src="images/IMG_0223.jpeg"
+            class="scene-image"
+            alt="휴대폰 알람 화면"
+          >
+
+          <div class="scene-text">
+
+            <div class="speaker">
+              📱 알람
+            </div>
+
+            <p>
+              ⏰ 알람이 울리고 있다.
+            </p>
+
+            <button
+              class="story-button"
+              onclick="wakeUp()"
+            >
+              알람 끄기
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  }
+
+
+  /* =========================
+     알람 끄기
+     ========================= */
+
+  function wakeUp() {
+
+    if (alarmSound) {
+
+      alarmSound.pause();
+      alarmSound.currentTime = 0;
+      alarmSound = null;
+
+    }
+
+
+    document.querySelector(".start-screen").innerHTML = `
+
+      <div class="story-screen">
+
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">📱 전화가 왔다</div>
+            <div class="speaker">
+              나
+            </div>
+
+            <p>
+              으음…… 몇 시지?
+            </p>
+
+            <p>
+              ……잠깐.
+            </p>
+
+            <p>
+              <strong>헉! 늦었다!</strong>
+            </p>
+
+            <button
+              class="story-button"
+              onclick="nextScene2()"
+            >
+              NEXT
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  }
+
+
+  /* =========================
+     다빈이 전화
+     ========================= */
+
+  function nextScene2() {
+
+    phoneRing =
+      new Audio("images/phone.mp3");
+
+    phoneRing.loop = true;
+    phoneRing.volume = 0.7;
+
+
+    phoneRing.play().catch(function() {
+
+      console.log(
+        "전화벨이 재생되지 않았습니다."
+      );
+
+    });
+
+
+    document.querySelector(".start-screen").innerHTML = `
+
+      <div class="story-screen">
+
+        <div class="day-title">
+          DAY 1
+        </div>
+
+        <div class="image-scene">
+
+          <img
+            src="images/IMG_0224.jpeg"
+            class="scene-image"
+            alt="다빈이에게 전화가 오는 화면"
+          >
+
+          <div class="scene-text">
+
+            <div class="speaker">
+              📱 전화가 왔다
+            </div>
 
             <p>
               띠링— 띠링—
             </p>
 
             <p>
-              화면을 확인하니 유다빈에게 전화가 와 있었다.
+              다빈이에게 전화가 와 있었다.
             </p>
 
-            <button class="story-button" onclick="answerCall()">
+            <button
+              class="story-button"
+              onclick="answerCall()"
+            >
               📞 전화 받기
             </button>
 
@@ -287,21 +688,22 @@
         </div>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 전화 받기
-  // =========================
+  /* =========================
+     전화 받기
+     ========================= */
 
   function answerCall() {
 
     if (phoneRing) {
+
       phoneRing.pause();
       phoneRing.currentTime = 0;
       phoneRing = null;
+
     }
 
 
@@ -309,21 +711,34 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">📱 유다빈</div>
+            <div class="speaker">
+              📱 유다빈
+            </div>
 
-            <p>여보세요?!</p>
+            <p>
+              여보세요?!
+            </p>
 
-            <p>너 지금 어디야?!</p>
+            <p>
+              너 지금 어디야?!
+            </p>
 
-            <p>설마 아직 집이야?!</p>
+            <p>
+              설마 아직 집이야?!
+            </p>
 
-            <button class="story-button" onclick="nextScene3()">
+            <button
+              class="story-button"
+              onclick="nextScene3()"
+            >
               NEXT
             </button>
 
@@ -332,14 +747,13 @@
         </div>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 유다빈과 통화
-  // =========================
+  /* =========================
+     플레이어 대사
+     ========================= */
 
   function nextScene3() {
 
@@ -351,13 +765,17 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">${playerName}</div>
+            <div class="speaker">
+              ${playerName}
+            </div>
 
             <p>
               나 지금 나가려고……!
@@ -367,7 +785,10 @@
               먼저 가 있어!
             </p>
 
-            <button class="story-button" onclick="nextScene4()">
+            <button
+              class="story-button"
+              onclick="nextScene4()"
+            >
               NEXT
             </button>
 
@@ -376,10 +797,13 @@
         </div>
 
       </div>
-
     `;
   }
 
+
+  /* =========================
+     다빈 대사
+     ========================= */
 
   function nextScene4() {
 
@@ -387,13 +811,17 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">유다빈</div>
+            <div class="speaker">
+              유다빈
+            </div>
 
             <p>
               알았어! 빨리 와!
@@ -403,7 +831,10 @@
               나도 지금 학교 가는 중이야!
             </p>
 
-            <button class="story-button" onclick="nextScene5()">
+            <button
+              class="story-button"
+              onclick="nextScene5()"
+            >
               NEXT
             </button>
 
@@ -412,14 +843,13 @@
         </div>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 학교로 출발
-  // =========================
+  /* =========================
+     학교로 출발
+     ========================= */
 
   function nextScene5() {
 
@@ -431,13 +861,17 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">${playerName}</div>
+            <div class="speaker">
+              ${playerName}
+            </div>
 
             <p>
               전화를 끊고 급하게 집을 나섰다.
@@ -447,7 +881,10 @@
               오늘은 정말 지각이다……
             </p>
 
-            <button class="story-button" onclick="nextScene6()">
+            <button
+              class="story-button"
+              onclick="nextScene6()"
+            >
               NEXT
             </button>
 
@@ -456,14 +893,13 @@
         </div>
 
       </div>
-
     `;
   }
 
 
-  // =========================
-  // 준호 등장 전
-  // =========================
+  /* =========================
+     준호 등장
+     ========================= */
 
   function nextScene6() {
 
@@ -471,21 +907,34 @@
 
       <div class="story-screen">
 
-        <div class="day-title">DAY 1</div>
+        <div class="day-title">
+          DAY 1
+        </div>
 
         <div class="story-background">
 
           <div class="scene-text">
 
-            <div class="speaker">나</div>
+            <div class="speaker">
+              나
+            </div>
 
-            <p>……어?</p>
+            <p>
+              ……어?
+            </p>
 
-            <p>저 사람……</p>
+            <p>
+              저 사람……
+            </p>
 
-            <p>설마…… 준호?</p>
+            <p>
+              설마…… 준호?
+            </p>
 
-            <button class="story-button" onclick="alert('다음 장면: 자전거를 타고 지나가는 준호')">
+            <button
+              class="story-button"
+              onclick="nextScene7()"
+            >
               NEXT
             </button>
 
@@ -494,8 +943,23 @@
         </div>
 
       </div>
-
     `;
   }
 
+
+  /* =========================
+     임시 다음 장면
+     ========================= */
+
+  function nextScene7() {
+
+    alert(
+      "다음 장면은 준호가 자전거를 타고 지나가는 장면입니다!"
+    );
+
+  }
+
 </script>
+
+</body>
+</html>
